@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.islaharper.jetpacktrivia.screens.QuestionsViewModel
+import com.islaharper.jetpacktrivia.screens.TriviaHome
 import com.islaharper.jetpacktrivia.ui.theme.JetpackTriviaTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,22 +32,6 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-}
-
-@Composable
-fun TriviaHome(viewModel: QuestionsViewModel = hiltViewModel()) {
-    Questions(viewModel)
-}
-
-@Composable
-fun Questions(viewModel: QuestionsViewModel) {
-    val questions = viewModel.data.value.data?.toMutableList()
-    if (viewModel.data.value.loading == true) {
-        Log.d("MainActivity", "Loading questions...")
-    } else {
-        Log.d("MainActivity", "Loading done...")
-    }
-    Log.d("MainActivity", "Questions: ${questions?.size}")
 }
 
 @Preview(showBackground = true)

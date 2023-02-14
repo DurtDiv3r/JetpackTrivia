@@ -1,15 +1,15 @@
 package com.islaharper.jetpacktrivia.repository
 
 import android.util.Log
-import com.islaharper.jetpacktrivia.data.DataorException
+import com.islaharper.jetpacktrivia.data.DataOrException
 import com.islaharper.jetpacktrivia.model.QuestionItem
 import com.islaharper.jetpacktrivia.network.QuestionAPI
 import javax.inject.Inject
 
 class QuestionRepository @Inject constructor(private val questionAPI: QuestionAPI) {
-    private val dataOrException = DataorException<ArrayList<QuestionItem>, Boolean, Exception>()
+    private val dataOrException = DataOrException<ArrayList<QuestionItem>, Boolean, Exception>()
 
-    suspend fun getAllQuestions(): DataorException<ArrayList<QuestionItem>, Boolean, Exception> {
+    suspend fun getAllQuestions(): DataOrException<ArrayList<QuestionItem>, Boolean, Exception> {
         try {
             dataOrException.loading = true
             dataOrException.data = questionAPI.getAllQuestions()
